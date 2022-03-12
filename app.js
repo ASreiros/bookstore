@@ -23,7 +23,6 @@ fetch('https://in3.dev/knygos/types/')
 .then(response => response.json())
 .then(data => {
    localStorage.setItem("Lentyna2", JSON.stringify(data))
-   console.log("ping");
     }))
 .then(x => {
     const data1 = JSON.parse(localStorage.getItem("Lentyna1"))
@@ -56,11 +55,14 @@ fetch('https://in3.dev/knygos/types/')
 
 
      const bookArr = document.querySelectorAll(".knyga")
-     //Below checks if there is favorite books and assign status favorite to them. Not checked
+     //Below checks if there is favorite books and assign status favorite to them.
     let memoryArr = JSON.parse(localStorage.getItem("Lentynafavorite"))
-    if(!(memoryArr.length > 0)){
+    
+    
+     if(memoryArr === null){
         memoryArr = [];
-    }
+        localStorage.setItem("Lentynafavorite", JSON.stringify(memoryArr))
+     }
 
     memoryArr.forEach(y => {
         const id = y;
@@ -68,9 +70,9 @@ fetch('https://in3.dev/knygos/types/')
         document.querySelector(`#es${id.substr(4)}`).classList.toggle("noshow")
         document.querySelector(`#s${id.substr(4)}`).classList.toggle("noshow")
 
-    })
+     })
     
-   //
+   
     //below generates click event
     bookArr.forEach( b => {
         b.addEventListener("click", () => {
@@ -83,14 +85,16 @@ fetch('https://in3.dev/knygos/types/')
         memoryArr = JSON.parse(localStorage.getItem("Lentynafavorite"))
         if (document.querySelector(`#es${id.substr(4)}`).classList.contains("noshow")) {
             memoryArr.push(id);
+            console.log(id, "we are here", memoryArr);
             localStorage.setItem("Lentynafavorite", JSON.stringify(memoryArr)) 
         } else{
             const tempArr = [];
             memoryArr.forEach(z => {
-                if (z.id !== id) {
-              tempArr.push(z.id)      
-                }
+            if (z !== id) {
+            tempArr.push(z)      
+         }
             })
+            console.log("tempArr", tempArr);
             localStorage.setItem("Lentynafavorite", JSON.stringify(tempArr))  
         }
         //
