@@ -145,7 +145,5 @@ fetch('https://in3.dev/knygos/types/')
 
  
 
-// memoryArr = JSON.parse(localStorage.getItem("Lentynafavorite"))
-//         memoryArr.push(id);
-//         localStorage.setItem("Lentynafavorite", JSON.stringify(memoryArr))
+
 
