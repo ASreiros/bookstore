@@ -4,12 +4,7 @@ function rand(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-{/* <div class="knyga">
-<img id="ibook" class="ibook" src="" alt="">
-<h4 id="nbook" class="nbook"></h4>
-<p id="tbook" class="tbook"></p>
-<p id="prbook" class="prbook"></p>
-</div> */}
+
 
 
 
