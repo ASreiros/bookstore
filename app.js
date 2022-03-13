@@ -33,10 +33,15 @@ fetch('https://in3.dev/knygos/types/')
     
     console.log(data1);
     console.log(data2);
+    // This generates dropdown menu
+    let categoryText = document.querySelector("#category").innerHTML
+    data2.forEach(s => {
+        categoryText = categoryText + `<option value="${s.title}">${s.title}</option>`
+    })
+    document.querySelector("#category").innerHTML = categoryText;
+    //
 
-
-    
-    
+    //This generates books
     data1.forEach((a)=> {
     
     const typas = data2[a.type-1].title    
@@ -51,10 +56,44 @@ fetch('https://in3.dev/knygos/types/')
     </div>`     
      });
      cont.innerHTML = conText;
-
+     //
 
 
      const bookArr = document.querySelectorAll(".knyga")
+    //This filters only the chosen books
+    const bb = document.querySelector("button")
+    bb.addEventListener("click", () => {
+    const selector = document.querySelector("#category")    
+        if((selector.value !== "All")&&(selector.value !== "Fav")){
+            bookArr.forEach(f => {
+                const id = f.id.substring(4)
+              const checker = document.querySelector(`#tbook${id}`).innerHTML
+              if(checker === selector.value){
+                    f.classList.remove("noshow")
+              }  else{
+                    f.classList.add("noshow") 
+              }
+            })
+        } else {
+        if (selector.value === "All") {
+            bookArr.forEach(f => {
+                f.classList.remove("noshow")
+            })
+        }
+        if(selector.value === "Fav"){
+            bookArr.forEach(f => {
+                if (f.classList.contains("favoritebook")) {
+                  f.classList.remove("noshow")  
+                } else{
+                    f.classList.add("noshow")    
+                }
+            })  
+        }
+    } 
+    })
+
+    //
+
      //Below checks if there is favorite books and assign status favorite to them.
     let memoryArr = JSON.parse(localStorage.getItem("Lentynafavorite"))
     

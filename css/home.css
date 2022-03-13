@@ -29,6 +29,28 @@ h1{
     margin-left: 15%;
 }
 
+.tarpine{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.tarpine > button{
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: brown;
+    color: beige;
+}
+
+.tarpine > select{
+    background-color: beige;
+}
+
+.tarpine > select > option{
+    background-color: beige;
+}
+
 .container{
     width:70%;
     margin-top: 50px;
